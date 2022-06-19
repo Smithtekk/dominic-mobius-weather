@@ -2,9 +2,9 @@ const apiURL = 'https://api.openweathermap.org/data/2.5';
 
 // Using open weather map API for fetching weather data, structuring link to fetching data based on user request
 // Documentation: https://openweathermap.org/current#geo
-// REACT_APP_WEATHER_API_KEY is set as a environment variable
+// REACT_APP_WEATHER_API_KEY is set as a environment variable with API key
 
-export const WeatherData = async (city: string | { lat: number; lng: number }) => {
+export const fetchWeatherData = async (city: string | { lat: number; lng: number }) => {
   let url = `${apiURL}/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
   if (typeof city === 'object') {
@@ -13,7 +13,7 @@ export const WeatherData = async (city: string | { lat: number; lng: number }) =
   return await (await fetch(url)).json();
 };
 
-export const ExtendedForecastData = async (city: string | { lat: number; lng: number }) => {
+export const fetchExtendedForecastData = async (city: string | { lat: number; lng: number }) => {
   let url = `${apiURL}/forecast/daily?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
   if (typeof city === 'object') {
